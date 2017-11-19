@@ -322,16 +322,19 @@ cmp_policy( sized_integer_t* n, int gt, char* attr )
 	kpabe_policy_t* p;
 	char* tplate;
 
+	int bits = (n->bits ? n->bits : 64);
+	uint64_t max_64bit_uint = ( ( ( (uint64_t)1 << (bits-1) ) - 1 ) << 1 ) + 1;
+
 	/* some error checking */
 
-	if( gt && n->value >= ((uint64_t)1<<(n->bits ? n->bits : 64)) - 1 )
+	if( gt && n->value >= max_64bit_uint )
 		die("error parsing policy: unsatisfiable integer comparison %s > %llu\n"
 				"(%d-bits are insufficient to satisfy)\n", attr, n->value,
 				n->bits ? n->bits : 64);
 	else if( !gt && n->value == 0 )
 		die("error parsing policy: unsatisfiable integer comparison %s < 0\n"
 				"(all numerical attributes are unsigned)\n", attr);
-	else if( !gt && n->value > ((uint64_t)1<<(n->bits ? n->bits : 64)) - 1 )
+	else if( !gt && n->value > max_64bit_uint )
 		die("error parsing policy: trivially satisfied integer comparison %s < %llu\n"
 				"(any %d-bit number will satisfy)\n", attr, n->value,
 				n->bits ? n->bits : 64);
