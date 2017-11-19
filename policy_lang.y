@@ -323,7 +323,7 @@ cmp_policy( sized_integer_t* n, int gt, char* attr )
 	char* tplate;
 
 	int bits = (n->bits ? n->bits : 64);
-	uint64_t max_64bit_uint = ( ( ( (uint64_t)1 << (bits-1) ) - 1 ) << 1 ) + 1;
+	uint64_t max_Nbit_uint = ( ( ( (uint64_t)1 << (bits-1) ) - 1 ) << 1 ) + 1;
 
 	/* some error checking */
 
