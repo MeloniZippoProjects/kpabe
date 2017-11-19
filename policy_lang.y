@@ -327,14 +327,14 @@ cmp_policy( sized_integer_t* n, int gt, char* attr )
 
 	/* some error checking */
 
-	if( gt && n->value >= max_64bit_uint )
+	if( gt && n->value >= max_Nbit_uint )
 		die("error parsing policy: unsatisfiable integer comparison %s > %llu\n"
 				"(%d-bits are insufficient to satisfy)\n", attr, n->value,
 				n->bits ? n->bits : 64);
 	else if( !gt && n->value == 0 )
 		die("error parsing policy: unsatisfiable integer comparison %s < 0\n"
 				"(all numerical attributes are unsigned)\n", attr);
-	else if( !gt && n->value > max_64bit_uint )
+	else if( !gt && n->value > max_Nbit_uint )
 		die("error parsing policy: trivially satisfied integer comparison %s < %llu\n"
 				"(any %d-bit number will satisfy)\n", attr, n->value,
 				n->bits ? n->bits : 64);
