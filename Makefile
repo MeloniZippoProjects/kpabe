@@ -5,17 +5,17 @@ bindir = ${exec_prefix}/bin
 mandir = ${prefix}/share/man
 
 CC = gcc
-CFLAGS  = -g -Wall \
-	-I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include   \
+CFLAGS  = -O3 -Wall \
 	 \
 	-I/usr/include/pbc -I/usr/local/include/pbc \
-	-I/home/yao/workspace/libcelia \
+	-I/usr/local/include/ \
+	-I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include \
 	-DPACKAGE_NAME=\"kpabe\" -DPACKAGE_TARNAME=\"kpabe\" -DPACKAGE_VERSION=\"0.3\" -DPACKAGE_STRING=\"kpabe\ 0.3\" -DPACKAGE_BUGREPORT=\"zhengyao@wpi.edu\" -DPACKAGE_URL=\"\" -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -DSTDC_HEADERS=1 -DHAVE_FCNTL_H=1 -DHAVE_STDDEF_H=1 -DHAVE_STRING_H=1 -DHAVE_STDLIB_H=1 -DHAVE_MALLOC=1 -DLSTAT_FOLLOWS_SLASHED_SYMLINK=1 -DHAVE_VPRINTF=1 -DHAVE_LIBCRYPTO=1 -DHAVE_LIBCRYPTO=1 -DHAVE_STRCHR=1 -DHAVE_STRDUP=1 -DHAVE_MEMSET=1 -DHAVE_GMP=1 -DHAVE_PBC=1 -DHAVE_CELIA=1
-LDFLAGS = -g -Wall \
-	-lglib-2.0   \
-	-Wl,-rpath /usr/local/lib -lgmp \
+LDFLAGS = -O3 -Wall \
+	-lcelia \
 	-Wl,-rpath /usr/local/lib -lpbc \
-	-L/home/yao/workspace/libcelia -lcelia \
+	-L/usr/local/lib/ -Wl,-rpath /usr/local/lib/ -Wl,-rpath /usr/local/lib -lgmp \
+	-lglib-2.0 -lintl \
 	-lcrypto -lcrypto 
 
 DISTNAME = kpabe-0.3

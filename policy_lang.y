@@ -628,7 +628,7 @@ parse_attribute( GSList** l, char* a )
 				die("error parsing attribute \"%s\": 64 bits is the maximum allowed\n",
 						a, value, bits);
 
-			if( value >= max_Nbit_uint )
+			if( value > max_Nbit_uint )
 				die("error parsing attribute \"%s\": value %llu too big for %d bits\n",
 						a, value, bits);
 
