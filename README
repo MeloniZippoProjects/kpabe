@@ -6,3 +6,25 @@ Cryptography (PBC) library installed. You can get it from the
 following page:
 
    http://crypto.stanford.edu/pbc/
+
+   
+Fixed Errors
+============
+
+The original repository had a few errors that we fixed.
+
+1. Calculation of max integer on N bits in policy creation: 
+	The original code didn't work for N = 64.
+	Corrected in commit 2cc5161, and refactored name in e108110.
+	
+2. Calculation of max integer on N bits in attribute parsing:
+	The original code didn't work for N = 64.
+	Corrected in commits 32f8f00, fc1aa73, 5115af5
+	
+3. Makefile not working in gcc or g++:
+	The original makefile had dependencies specified in such an order
+	that gcc ignored some of them. 
+	Corrected in commit c2be48b
+	
+	
+	
